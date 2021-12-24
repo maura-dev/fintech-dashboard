@@ -1,7 +1,7 @@
 
  import React from "react";
  import Navigation from "./components/Navigation";
- import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+ import { BrowserRouter , Routes, Route } from "react-router-dom";
  import routes from "./routes";
  import { useStyles } from "./styles";
  import Dashboard from "./pages/Dashboard";
@@ -10,22 +10,20 @@
    const classes = useStyles();
    return (
      <div className={classes.appRoot}>
-       <Router>
+       <BrowserRouter>
          <Navigation />
          <Dashboard />
          <div>
            <div className={classes.appBarSpacer}></div>
-           {/* <Switch>
+           <Routes>
              {routes.map((route, index) => {
                return (
-                 <Route exact key={index} path={route.path}>
-                   {route.component}
-                 </Route>
+                 <Route key={index} path={route.path} element={<route.component/>}/>
                );
              })}
-           </Switch> */}
+           </Routes>
          </div>
-       </Router>
+       </BrowserRouter>
      </div>
    );
  };
